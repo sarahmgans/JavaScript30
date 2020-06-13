@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Console Tricks!</title>
+</head>
+
+<body>
+
+  <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+  <script>
+    const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+    function makeGreen() {
+      const p = document.querySelector('p');
+      p.style.color = '#BADA55';
+      p.style.fontSize = '50px';
+    }
+
+    // Regular
+
+    // Interpolated
+    // console.log(`Hello I am a ${}`)
+    // Styled
+    console.log('%c I am some great text', 'font-size: 50px; background-color: etc')
+    // warning!
+    console.warn('oh no')
+    // Error :|
+    console.error('shit')
+    // Info
+    console.info('')
+    // Testing, only fired if it is wrong
+    console.assert(1 === 1, 'That is wrong')
+    // clearing
+    console.clear();
+    // Viewing DOM Elements
+    // console.dir(p);
+    // Grouping together
+    dogs.forEach(dog => {
+      console.group(`${dog.name}`)
+      console.log(`This is ${dog.name}`)
+      console.log(`${dog.name} is ${dog.age} years old`)
+      console.log(`${dog.name} is ${dog.age * 7} dog years old`)
+      console.groupEnd(`${dog.name}`)
+    })
+    // counting
+    console.count('Wes');
+    // timing
+    console.time('fetching data')
+    fetch('htpps://api.github.com/users/wesbos')
+      .then(data => data.json())
+      .data(data => {
+        console.timeEnd('fetching data')
+        console.log(data)
+      })
+    // console.log, array of objects, assuming they all have the same properties, it will display them in a nice table for you. 
+  </script>
+</body>
+
+</html>
